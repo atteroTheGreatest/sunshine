@@ -67,7 +67,6 @@ public class ForecastFragment extends Fragment {
                 .getDefaultSharedPreferences(getActivity());
         String zipCode = sharedPref.getString(getString(R.string.pref_location_key),
                 getString((R.string.pref_location_default)));
-        zipCode = getString((R.string.pref_location_default));
         Log.v("zip code", zipCode);
         weatherTask.execute(zipCode);
     }
