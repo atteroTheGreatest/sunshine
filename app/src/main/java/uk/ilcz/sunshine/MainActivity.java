@@ -31,17 +31,42 @@ import java.util.Arrays;
 
 
 public class MainActivity extends ActionBarActivity {
+    private final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    @Override
+    protected void onStop() {
+        Log.v(LOG_TAG, "On stop");
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.v(LOG_TAG, "On resume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.v(LOG_TAG, "On destroy");
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.v(LOG_TAG, "On create");
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ForecastFragment())
+                    .add(R.id.fragment_forecast, new ForecastFragment())
                     .commit();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        Log.v(LOG_TAG, "On pause");
+        super.onPause();
     }
 
     @Override

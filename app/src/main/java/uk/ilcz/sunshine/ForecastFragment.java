@@ -77,10 +77,7 @@ public class ForecastFragment extends Fragment {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_refresh) {
-            updateWeather();
-            return true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -196,7 +193,7 @@ public class ForecastFragment extends Fragment {
 
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
             String unitType = sharedPrefs.getString(getString(R.string.pref_units_key),
-                    getString(R.string.pref_units_default));
+                    getString(R.string.pref_units_metric));
 
             for(int i = 0; i < weatherArray.length(); i++) {
                 // For now, using the format "Day, description, hi/low"
